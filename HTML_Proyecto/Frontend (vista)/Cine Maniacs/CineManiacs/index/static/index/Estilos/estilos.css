@@ -69,18 +69,12 @@ img{
 .column .movie-item {
     height: 100%;
 }
-
-
-
-
-
 .column.is-3, .column.is-3-tablet {
     -webkit-box-flex: 0;
     -ms-flex: none;
     flex: none;
     width: 25%;
 }
-
 .column {
     display: block;
     -ms-flex-preferred-size: 0;
@@ -92,7 +86,7 @@ img{
     flex-shrink: 1;
     padding: 0.75rem;
 }
-.card, .cineco-card-item, .food-detail, .food-item, .media-card, .movie-item, .transaction-item {
+.food-item,.movie-item{
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -197,11 +191,9 @@ img{
     background-color: #000;
     min-width: 1024px
 }
-
 .header{
     display: block;
 }
-
 .header-top {
         display: -webkit-box;
         display: -ms-flexbox;
@@ -215,10 +207,9 @@ img{
         position: relative;
         padding: 0.3rem 1.625rem 0.3rem;
         background-color: #000;
-        height: 5rem;
+        height: 3.75rem;
         border-bottom-right-radius: 1.875rem;
 }
-
 .header img{
     margin-left: 0;
     width: 180px;
@@ -233,7 +224,6 @@ img{
 .header-brand {
     max-width: 200px;
 }
-
 .search-bar__button {
     position: absolute;
     cursor: pointer;
@@ -244,19 +234,12 @@ img{
     background-color: rgba(255,255,255,0);
     border: none;
 }
-
-
-
-
-
 .header-top .header-brand+* {
     margin-left: auto;
 }
-
 .nav-tabs {
     padding: 0.75rem 0;
 }
-
 .nav-tabs {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -269,9 +252,6 @@ img{
     grid-template-columns: repeat(3,1fr);
     grid-column-gap: 0.5rem;
 }
-
-
-
 .search-bar__form {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -288,8 +268,6 @@ img{
     z-index: 2;
     overflow: hidden;
 }
-
-
 .search-bar__suggestions-wrapper {
     position: absolute;
     left: 0;
