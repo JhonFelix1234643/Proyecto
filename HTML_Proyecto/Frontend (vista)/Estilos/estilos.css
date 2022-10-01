@@ -235,10 +235,24 @@ img{
         position: relative;
         padding: 0.3rem 1.625rem 0.3rem;
         background-color: #000;
-        height: 3.75rem;
+        height: 5rem;
         border-bottom-right-radius: 1.875rem;
 }
 
+.header img{
+    margin-left: 0;
+    width: 180px;
+    height: 60px;
+    margin-top: 0;
+}
+
+.header-top .header-brand:not(:first-child) a {
+    padding-left: 1rem;
+}
+
+.header-brand {
+    max-width: 200px;
+}
 
 .search-bar__button {
     position: absolute;
