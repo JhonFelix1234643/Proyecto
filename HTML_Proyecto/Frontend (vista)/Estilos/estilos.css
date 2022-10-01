@@ -56,11 +56,15 @@ img{
     margin-right: -0.75rem;
     margin-top: -0.75rem;
 }
+
+
 .column.is-3, .column.is-3-tablet {
-    -webkit-box-flex: 0;
-    -ms-flex: none;
-    flex: none;
-    width: 25%;
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(200px, 1fr)
+        );
+    gap:16px;
 }
 .movie-item__image img {
     transition: all .3s ease;
@@ -70,16 +74,6 @@ img{
     height: 100%;
 }
 
-
-
-
-
-.column.is-3, .column.is-3-tablet {
-    -webkit-box-flex: 0;
-    -ms-flex: none;
-    flex: none;
-    width: 25%;
-}
 
 .column {
     display: block;
@@ -98,31 +92,24 @@ img{
 
 
 
-.card, .cineco-card-item, .food-detail, .food-item, .media-card, .movie-item, .transaction-item {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: start;
-    -ms-flex-align: start;
+.movie-item {
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(150px, 1fr)
+    );
+    gap: 16px;
     align-items: flex-start;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
     border-radius: 6px;
-    -webkit-box-shadow: 0 0 10px rgb(0 0 0 / 10%);
-    box-shadow: 0 0 10pxrgba(0,0,0,.1);
+    box-shadow: 0 0 10px rgba(0,0,0,.1);
     color: rgb(0, 0, 0);
     padding: 0.9375rem 1.0625rem;
     background-color: rgb(255, 255, 255);
-    -webkit-transition: all .3s ease-in-out;
     transition: all .3s ease-in-out;
 }
 
 .movie-info__meta, .movie-item__meta{
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
+    display: grid;
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
@@ -133,9 +120,12 @@ img{
 .movie-info__meta:not(:last-child), .movie-item__meta:not(:last-child) {
     margin-bottom: 0.15rem;
 }
+
 .tag:not(body).is-danger {
     background-color: #eaeaea;
     color: #d0021b;
+    width:100%;
+    word-break: normal;
 }
 
 
@@ -160,8 +150,6 @@ img{
     display: -webkit-inline-box;
     display: -ms-inline-flexbox;
     display: inline-flex;
-    font-size: .75rem;
-    height: 2em;
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center;
@@ -223,11 +211,8 @@ img{
 }
 
 .header-top {
-        display: -webkit-box;
-        display: -ms-flexbox;
         display: flex;
         -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
         justify-content: space-between;
         -webkit-box-align: center;
         -ms-flex-align: center;
