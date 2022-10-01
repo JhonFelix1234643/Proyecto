@@ -203,7 +203,6 @@ img{
 
 .header {
     background-color: #000;
-    min-width: 1024px
 }
 
 .header{
@@ -222,6 +221,11 @@ img{
         background-color: #000;
         height: 5rem;
         border-bottom-right-radius: 1.875rem;
+        width:100%;
+}
+
+@media (max-width: 464px) {
+    .header img {display: none}
 }
 
 .header img{
