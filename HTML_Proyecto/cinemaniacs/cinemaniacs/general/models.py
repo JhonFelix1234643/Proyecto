@@ -1,68 +1,64 @@
+# This is an auto-generated Django model module.
+# You'll have to do the following manually to clean this up:
+#   * Rearrange models' order
+#   * Make sure each model has one field with primary_key=True
+#   * Make sure each ForeignKey and OneToOneField has `on_delete` set to the desired behavior
+#   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
+# Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
-from datetime import datetime
-# Create your models here.
 
 
-#ID_Usuario,Nombre,Apellido,Telefono,Correo,Rol,Contraseña
-class User(models.Model):
-    id_user = models.AutoField('Id',primary_key=True)
-    name = models.CharField('Nombres completos', max_length=50)
-    last_name = models.CharField('Apellidos', max_length=50)
-    phone = models.CharField('Telefono', max_length=50)
-    e_mail = models.CharField('Correo', max_length=150)
+class Genero(models.Model):
+    id_genero = models.IntegerField(db_column='ID_Genero', primary_key=True)  # Field name made lowercase.
+    genero = models.CharField(db_column='Genero', max_length=45)  # Field name made lowercase.
 
     def __str__(self):
-        return self.id_user
+        return self.genero
 
     class Meta:
-        verbose_name='Id usuario'
-        verbose_name_plural='Id usuarios'
-        db_table= 'User'
-        ordering=['id_user']
+        managed = False
+        db_table = 'genero'
 
-# Tabla Pelicula-------------------------------------------------------------------------
-class Movie(models.Model):
-    id_movie = models.AutoField('Id Película',primary_key=True)
-    name_movie = models.CharField('Nombre Película', max_length=250)
-    description = models.TextField('Descripción')
-    director = models.CharField('Director', max_length=60)
-    last = models.CharField('Duración',max_length=15)
+
+class Pelicula(models.Model):
+    id_pelicula = models.IntegerField(db_column='ID_Pelicula', primary_key=True)  # Field name made lowercase.
+    nombre_pelicula = models.CharField(db_column='Nombre_Pelicula', max_length=50)  # Field name made lowercase.
+    descripcion = models.CharField(db_column='Descripcion', max_length=500)  # Field name made lowercase.
+    director = models.CharField(db_column='Director', max_length=45)  # Field name made lowercase.
+    duracion = models.CharField(db_column='Duracion', max_length=45)  # Field name made lowercase.
 
     def __str__(self):
-        return self.id_movie
-
+        return self.nombre_pelicula
     class Meta:
-        verbose_name='Id Película'
-        verbose_name_plural='Id Películas'
-        db_table= 'movie'
-        ordering=['id_movie']
+        managed = False
+        db_table = 'pelicula'
 
-# Tabla Genero--------------------------------------------------------------------------
-# ID_Genero,Genero
-class Genres(models.Model):
-    id_genres = models.AutoField('Id Genero',primary_key=True)
-    name_genres = models.CharField('Genero', max_length=250)
+
+class PeliculaHasGenero(models.Model):
+    pelicula_id_pelicula = models.OneToOneField(Pelicula, models.DO_NOTHING, db_column='Pelicula_ID_Pelicula', primary_key=True)  # Field name made lowercase.
+    genero_id_genero = models.ForeignKey(Genero, models.DO_NOTHING, db_column='Genero_ID_Genero')  # Field name made lowercase.
 
     def __str__(self):
-        return self.id_genres
+        return self.genero
 
     class Meta:
-        verbose_name='Id Genero'
-        verbose_name_plural='Id Generos'
-        db_table= 'genres'
-        ordering=['id_genres']
+        managed = False
+        db_table = 'pelicula_has_genero'
+        unique_together = (('pelicula_id_pelicula', 'genero_id_genero'),)
 
-#Tabla pelicula_has_genero----------------------------------------------------------------
-#(Pelicula_ID_Pelicula,Genero_ID_Genero)
-class Movie_has_genre(models.Model):
-    id_movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
-    id_genres = models.ForeignKey(Genres, on_delete=models.CASCADE)
+
+class Usuario(models.Model):
+    id_usuario = models.IntegerField(db_column='ID_Usuario', primary_key=True)  # Field name made lowercase.
+    nombre = models.CharField(db_column='Nombre', max_length=45)  # Field name made lowercase.
+    apellido = models.CharField(db_column='Apellido', max_length=45)  # Field name made lowercase.
+    telefono = models.IntegerField(db_column='Telefono')  # Field name made lowercase.
+    correo = models.CharField(db_column='Correo', max_length=50)  # Field name made lowercase.
+    rol = models.CharField(db_column='Rol', max_length=45)  # Field name made lowercase.
+    contrasena = models.CharField(db_column='Contrasena', max_length=45)  # Field name made lowercase.
 
     def __str__(self):
-        return self.id_movie
+        return self.nombre
 
     class Meta:
-        verbose_name='Id Película'
-        verbose_name_plural='Id Películas'
-        db_table= 'movie'
-        ordering=['id_movie']
+        managed = False
+        db_table = 'usuario'

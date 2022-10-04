@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class GeneralConfig(AppConfig):
+class IndexConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'general'
+    name = 'index'
