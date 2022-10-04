@@ -8,15 +8,12 @@
 from django.db import models
 
 
+
 class Genero(models.Model):
     id_genero = models.IntegerField(db_column='ID_Genero', primary_key=True)  # Field name made lowercase.
     genero = models.CharField(db_column='Genero', max_length=45)  # Field name made lowercase.
 
-    def __str__(self):
-        return self.genero
-
     class Meta:
-        managed = False
         db_table = 'genero'
 
 
@@ -27,10 +24,7 @@ class Pelicula(models.Model):
     director = models.CharField(db_column='Director', max_length=45)  # Field name made lowercase.
     duracion = models.CharField(db_column='Duracion', max_length=45)  # Field name made lowercase.
 
-    def __str__(self):
-        return self.nombre_pelicula
     class Meta:
-        managed = False
         db_table = 'pelicula'
 
 
@@ -38,11 +32,7 @@ class PeliculaHasGenero(models.Model):
     pelicula_id_pelicula = models.OneToOneField(Pelicula, models.DO_NOTHING, db_column='Pelicula_ID_Pelicula', primary_key=True)  # Field name made lowercase.
     genero_id_genero = models.ForeignKey(Genero, models.DO_NOTHING, db_column='Genero_ID_Genero')  # Field name made lowercase.
 
-    def __str__(self):
-        return self.genero
-
     class Meta:
-        managed = False
         db_table = 'pelicula_has_genero'
         unique_together = (('pelicula_id_pelicula', 'genero_id_genero'),)
 
@@ -56,9 +46,5 @@ class Usuario(models.Model):
     rol = models.CharField(db_column='Rol', max_length=45)  # Field name made lowercase.
     contrasena = models.CharField(db_column='Contrasena', max_length=45)  # Field name made lowercase.
 
-    def __str__(self):
-        return self.nombre
-
     class Meta:
-        managed = False
         db_table = 'usuario'
