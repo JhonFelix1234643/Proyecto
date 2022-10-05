@@ -16,8 +16,6 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from django.conf import settings
-from django.views.static import serve
-from rest_framework import serializers
 
 
 
@@ -26,7 +24,10 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
     path('pagina_principal/',include('index.urls')),
     path('info/', include('infope.urls')),
+    path('info1/', include('iron.urls')),
+
 ]
+
 
 
 
